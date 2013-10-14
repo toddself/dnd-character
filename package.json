@@ -1,0 +1,22 @@
+{
+  "name": "dnd",
+  "version": "0.0.0",
+  "description": "dnd",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:toddself/dnd"
+  },
+  "keywords": [
+    "dnd"
+  ],
+  "author": "Todd Kennedy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toddself/dnd/issues"
+  },
+  "dependencies": {}
+}
