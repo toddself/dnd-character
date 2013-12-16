@@ -1,9 +1,9 @@
 {
-  "name": "d",
-  "description": "DND",
+  "name": "DND-Character",
+  "description": "DND Character creator",
   "version": "0.0.0",
   "repository": {
-    "url": "git://github.com/toddself/d.git"
+    "url": "git://github.com/toddself/dnd-character.git"
   },
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,8 @@
     "backbone-orm": "~0.5.4"
   },
   "devDependencies": {
-    "tap": "~0.4.4"
+    "tap": "~0.4.6",
+    "jshint": "~2.3.0"
   },
   "author": {
     "name": "Todd Kennedy",
