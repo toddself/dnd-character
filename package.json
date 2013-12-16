@@ -1,0 +1,41 @@
+{
+  "name": "d",
+  "description": "DND",
+  "version": "0.0.0",
+  "repository": {
+    "url": "git://github.com/toddself/d.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "if [[ -d .git ]]; then cp $HOME/.pre-commit.sh .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit; fi",
+    "pre-commit": "npm run lint && npm test",
+    "lint": "jshint",
+    "test": "if [[ -d test ]]; then tap test/*js; else tap *test.js; fi"
+  },
+  "browser": {
+    "data-store": "./lib/http-sync"
+  },
+  "dependencies": {
+    "backbone": "~1.1.0",
+    "backbone-rest": "~0.5.2",
+    "backbone-http": "~0.5.3",
+    "backbone-mongo": "~0.5.0",
+    "backbone-orm": "~0.5.4"
+  },
+  "devDependencies": {
+    "tap": "~0.4.4"
+  },
+  "author": {
+    "name": "Todd Kennedy",
+    "email": "<todd@selfassembled.org>",
+    "url": "http://tck.io"
+  },
+  "keywords": [],
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/toddself/d/blog/master/LICENSE"
+  },
+  "engine": {
+    "node": ">=0.8"
+  }
+}
