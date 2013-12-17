@@ -3,7 +3,7 @@
 var Backbone = require('backbone');
 var dataStore = require('../lib/data-store');
 
-var Skill = Backbone.Models.extend({
+var Skill = Backbone.Model.extend({
   urlRoot: '/skill',
   defaults: {
     name: '',

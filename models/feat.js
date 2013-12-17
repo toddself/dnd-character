@@ -3,7 +3,7 @@
 var Backbone = require('backbone');
 var dataStore = require('../lib/data-store');
 
-var Feat = Backbone.Models.extend({
+var Feat = Backbone.Model.extend({
   urlRoot: '/feat',
   defaults: {
     name: '',

@@ -5,6 +5,8 @@ var dataStore = require('../lib/data-store');
 var Weapon = require('./weapon');
 
 var WeaponSet = Backbone.Model.extend({
+  urlRoot: '/weaponset',
+
   schema: {
     leftHand: function(){
       return ['hasOne', Weapon];

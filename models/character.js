@@ -1,14 +1,10 @@
 'use strict';
 
-// TODO: Fix inventory system so it relates to "inventory set" which shows
-// the number of that item in the inventory. Also, make weapon & armor
-// available as part of inventory
-
 var Backbone = require('backbone');
 var dataStore = require('../lib/data-store');
-var constrain = require('../lib/constrain');
+var validate = require('backbone.validator');
 
-var User = require('./user');
+// var User = require('./user');
 var CharacterClass = require('./character-class');
 var Race = require('./race');
 var StatsBlock = require('./stats-block');
@@ -16,15 +12,20 @@ var Size = require('./size');
 var SkillsBlock = require('./skills-block');
 var FeatsBlock = require('./feats-block');
 var Language = require('./language');
-var Inventory = require('./inventory');
+
+var InventorySet = require('./inventory-set');
 var ArmorSet = require('./armor-set');
 var WeaponSet = require('./weapon-set');
+
+var alignments = require('../data/alignments');
 
 var Character = Backbone.Model.extend({
   urlRoot: '/character',
 
-  constraints: {
-    alignment: require('../data/alignments')
+  validators: {
+    alignment: {
+      inList: alignments
+    }
   },
 
   defaults: {
@@ -53,11 +54,11 @@ var Character = Backbone.Model.extend({
     },
 
     weaponSet: function(){
-      return ['manyToMany', WeaponSet, {embed: true}];
+      return ['hasOne', WeaponSet, {embed: true}];
     },
 
     inventory: function(){
-      return ['manyToMany', Inventory];
+      return ['hasOne', InventorySet];
     },
 
     languages: function(){
@@ -88,18 +89,14 @@ var Character = Backbone.Model.extend({
       return ['manyToMany', CharacterClass];
     },
 
-    user: function(){
-      return ['hasMany', User];
-    }
+    // user: function(){
+    //   return ['hasMany', User];
+    // }
   },
 
-  initialize: function(){
-    this.on('change', this._constrain, this);
-  },
-
-  _constrain: constrain
 });
 
+Character.prototype.validate = validate;
 Character.prototype.sync = dataStore(Character);
 
 module.exports = Character;

@@ -2,14 +2,21 @@
 
 var Backbone = require('backbone');
 var dataStore = require('../lib/data-store');
-var Weapon = require('./weapon');
+var Armor = require('./armor');
 
-var WeaponSet = Backbone.Model.extend({
+var ArmorSet = Backbone.Model.extend({
+  urlRoot: '/armorset',
+
   schema: {
-
+    body: function(){
+      return ['hasOne', Armor];
+    },
+    shield: function(){
+      return ['hasOne', Armor];
+    }
   }
 });
 
-WeaponSet.prototype.sync = dataStore(WeaponSet);
+ArmorSet.prototype.sync = dataStore(ArmorSet);
 
-module.exports = WeaponSet;
+module.exports = ArmorSet;

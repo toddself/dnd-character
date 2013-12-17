@@ -1,7 +1,7 @@
 'use strict';
 
 var Backbone = require('backbone');
-var dataStore = require('data-store');
+var dataStore = require('../lib/data-store');
 
 var Size = Backbone.Model.extend({
   urlRoot: '/size',

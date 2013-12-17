@@ -20,7 +20,8 @@
     "backbone-rest": "~0.5.2",
     "backbone-http": "~0.5.3",
     "backbone-mongo": "~0.5.0",
-    "backbone-orm": "~0.5.4"
+    "backbone-orm": "~0.5.4",
+    "backbone.validator": "~1.1.1"
   },
   "devDependencies": {
     "tap": "~0.4.6",

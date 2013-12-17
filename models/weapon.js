@@ -2,15 +2,17 @@
 
 var Backbone = require('backbone');
 var dataStore = require('../lib/data-store');
-var constrain = require('../lib/constrain');
+var validate = require('backbone.validator');
 
 var weaponTypes = require('../data/weapon-types');
 
 var Weapon = Backbone.Model.extend({
   urlRoot: '/weapon',
 
-  constraints: {
-    type: weaponTypes
+  validators:{
+    type: {
+      inList: weaponTypes
+    }
   },
 
   defaults: {
@@ -31,15 +33,10 @@ var Weapon = Backbone.Model.extend({
     ammo: function(){
       return ['hasOne', Weapon];
     }
-  },
-
-  initialize: function(){
-    this.on('change', this._constrain, this);
-  },
-
-  _constrain: constrain
+  }
 });
 
+Weapon.prototype.validate = validate;
 Weapon.prototype.sync = dataStore(Weapon);
 
 module.exports = Weapon;
